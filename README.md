@@ -1,4 +1,4 @@
-# BASHRC
+# BASHRC do tchê tchê rê rê, Gustavo Lima e Vocẽ
 
 Para fazer com que estes arquivos sejam válidos para seu shell Bash, é necessário baixar este repositório e criar links simbólicos do diretório do seu usuário
 
