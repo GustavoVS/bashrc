@@ -921,3 +921,9 @@ complete -F _killall killall killps
 # mode:shell-script
 # sh-shell:bash
 # End:
+
+function s() {
+  ssh-copy-id $1
+  scp /etc/bash.bashrc $1:/tmp/.bashrc_temp
+  ssh -t $1 "bash --rcfile /tmp/.bashrc_temp"
+}
