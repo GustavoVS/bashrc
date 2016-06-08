@@ -922,8 +922,110 @@ complete -F _killall killall killps
 # sh-shell:bash
 # End:
 
+function install_rsub() {
+    sudo wget -O /usr/local/bin/rsub \
+    https://raw.github.com/aurora/rmate/master/rmate
+    chmod 755 /usr/local/bin/rsub
+}
+
+
 function s() {
   ssh-copy-id $1
   scp /etc/bash.bashrc $1:/tmp/.bashrc_temp
   ssh -t $1 "bash --rcfile /tmp/.bashrc_temp"
 }
+
+alias skate="kate >&/dev/null "
+alias skomp="kompare >&/dev/null "
+alias rmbackups="find -name '*~' -exec rm '{}' \;" #delete backup files
+alias sshc='ssh -c arcfour,blowfish-cbc -C '
+
+alias search="grep -R "
+alias g="grep"
+alias and="grep"
+alias not="grep -v"
+
+alias o='xdg-open '
+
+alias upgrade="sudo apt-get update && sudo apt-get upgrade -y --force-yes && sudo apt-get dist-upgrade -y --force-yes"
+
+alias gco="git checkout "
+alias gba="git branch -a"
+alias gbr="git branch "
+alias gcm="git commit -m "
+alias gps="git push"
+alias gpu="git pull "
+alias gpr="git pull --rebase "
+alias gad="git add "
+alias gaa="git add -A"
+alias gam="git add -u"
+alias gst="git status"
+
+
+alias testall="rake test"
+alias testpush="testall && git push"
+
+#export VP=vendor/plugins
+
+#export GEMLIB=/usr/lib/ruby/gems/1.8/
+#export HOBO=/usr/lib/ruby/gems/1.8/gems/hobo-1.0.2/
+#export ACTIVE_RECORD=/usr/lib/ruby/gems/1.8/gems/activerecord-2.3.8
+
+export MOZ_DISABLE_PANGO=1
+
+alias = ""
+
+# WELCOME SCREEN
+################################################## #####
+
+clear
+
+weekday=$(date "+%-u")
+msg=""
+if [ $weekday -eq 1 ]
+then
+    msg="Hardcore day to work. I bet."
+fi
+if [ $weekday -eq 2 ]
+then
+    msg=""
+fi
+if [ $weekday -eq 3 ]
+then
+    msg="Finish your job and go drink beer to celebrate the midweek."
+fi
+if [ $weekday -eq 4 ]
+then
+    msg=""
+fi
+if [ $weekday -eq 5 ]
+then
+    msg="Today is the badness day. Go to run update/delete without where! Install Windows on a Mac Computer.."
+fi
+if [ $weekday -eq 6 ]
+then
+    msg="Are you working today brah?"
+fi
+if [ $weekday -eq 7 ]
+then
+    msg="You still working brah?"
+fi
+
+echo -ne "${White}" "Hello $USER, " $msg
+echo -ne "${Purple}" "Today is "; date
+echo -e "${Green}"; cal -3;
+echo -ne "${Cyan}";
+
+
+# UMUR PERSONAL
+###############
+export W=~/nondoc/workspaces
+export A=~/nondoc/workspaces/active
+
+export CDPATH=.:$W
+
+export EDITOR=mousepad
+#update-alternatives --query gems
+
+# This is a good place to source rvm v v v
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads
