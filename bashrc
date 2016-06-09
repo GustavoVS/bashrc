@@ -953,13 +953,35 @@ alias gco="git checkout "
 alias gba="git branch -a"
 alias gbr="git branch "
 alias gcm="git commit -m "
-alias gps="git push"
+# alias gps="git push"
+function gps() {
+    git config --global credential.helper cache
+    git config --global credential.helper 'cache --timeout=3600'
+    git push
+}
 alias gpu="git pull "
 alias gpr="git pull --rebase "
 alias gad="git add "
 alias gaa="git add -A"
 alias gam="git add -u"
 alias gst="git status"
+alias gdf="git diff "
+alias gcl="git clone "
+
+function ln_t() {
+    ln -sf mapasculturais/src/protected/application/themes/$1 $2
+    if [ $2 ]
+    then
+        echo "Linking mapasculturais/src/protected/application/themes/"$1" into " $2
+    else
+        echo "Linking mapasculturais/src/protected/application/themes/"$1" into " $1
+    fi
+
+}
+
+function gh_r() {
+    git clone https://github.com/$1 $2
+}
 
 
 alias testall="rake test"
@@ -1016,6 +1038,7 @@ echo -ne "${Purple}" "Today is "; date
 echo -e "${Green}"; cal -3;
 echo -ne "${Cyan}";
 
+alias cdt="cd src/protected/application/themes/"
 
 # UMUR PERSONAL
 ###############
