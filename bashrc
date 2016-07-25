@@ -1,4 +1,5 @@
-# =============================================================== #
+#!/bin/bash
+=============================================================== #
 #
 # PERSONAL $HOME/.bashrc FILE for bash-3.0 (or later)
 # By Emmanuel Rouat [no-email]
@@ -932,7 +933,7 @@ function install_rsub() {
 function s() {
   ssh-copy-id $1
   scp /etc/bash.bashrc $1:/tmp/.bashrc_temp
-  ssh -t $1 "bash --rcfile /tmp/.bashrc_temp"
+  ssh -t $1 $2 $3 "bash --rcfile /tmp/.bashrc_temp"
 }
 
 alias skate="kate >&/dev/null "
@@ -956,10 +957,14 @@ alias gcm="git commit -m "
 # alias gps="git push"
 function gps() {
     git config --global credential.helper cache
-    git config --global credential.helper 'cache --timeout=3600'
-    git push
+    git config --global credential.helper 'cache --timeout=604800'
+    git push $1 $2 $3 $4 $5 $6
 }
-alias gpu="git pull "
+function gpu(){
+    git config --global credential.helper cache
+    git config --global credential.helper 'cache --timeout=604800'
+    git pull $1 $2 $3 $4 $5 $6
+}
 alias gpr="git pull --rebase "
 alias gad="git add "
 alias gaa="git add -A"
@@ -1052,3 +1057,5 @@ export EDITOR=mousepad
 
 # This is a good place to source rvm v v v
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads
+
+. /usr/local/bin/virtualenvwrapper.sh
