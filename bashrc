@@ -954,6 +954,7 @@ alias gco="git checkout "
 alias gba="git branch -a"
 alias gbr="git branch "
 alias gcm="git commit -m "
+alias gme="git mergetool "
 # alias gps="git push"
 function gps() {
     git config --global credential.helper cache
