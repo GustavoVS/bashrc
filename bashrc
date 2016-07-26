@@ -970,7 +970,7 @@ alias gad="git add "
 alias gaa="git add -A"
 alias gam="git add -u"
 alias gst="git status"
-alias gdf="git diff "
+alias gdf="git diff -w "
 alias gcl="git clone "
 
 function ln_t() {
@@ -988,6 +988,10 @@ function gh_r() {
     git clone https://github.com/$1 $2
 }
 
+
+function ssu(){
+    su $1 $2 $3 $4 $5-c "bash --rcfile /tmp/.bashrc_temp"
+}
 
 alias testall="rake test"
 alias testpush="testall && git push"
