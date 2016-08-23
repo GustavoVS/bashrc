@@ -952,9 +952,12 @@ alias upgrade="sudo apt-get update && sudo apt-get upgrade -y --force-yes && sud
 
 alias gco="git checkout "
 alias gba="git branch -a"
-alias gbr="git branch "
 alias gcm="git commit -m "
 alias gme="git mergetool "
+alias gbr="git branch "
+function gbrkeep(){
+    git branch | grep -v "$1" | xargs git branch -D
+}
 # alias gps="git push"
 function gps() {
     git config --global credential.helper cache
