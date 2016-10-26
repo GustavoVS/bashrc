@@ -976,6 +976,7 @@ alias gam="git add -u"
 alias gst="git status"
 alias gdf="git diff -w "
 alias gcl="git clone "
+alias gcp='git cherry-pick '
 
 function ln_t() {
     ln -sf mapasculturais/src/protected/application/themes/$1 $2
