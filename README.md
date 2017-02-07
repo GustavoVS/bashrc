@@ -37,7 +37,7 @@ $ ln -sf $(pwd)/bash_profile /etc/profile
 $ ln -sf $(pwd)/bashrc /etc/bash.bashrc
 ```
 
-## Fazendo funcionar no server
+## Fazendo funcionar Sublime no server
 
 1 - Adicione portas ativas para conexão do ssh com sublime: abra o arquivo `/etc/ssh/ssh_config` e adicione a linha abaixo: 
 
