@@ -11,7 +11,7 @@ YELLOW='\e[1;33m'
 LIGHTBLUE='\e[1;34m'
 NC='\e[m'
 
-PCT="\`if [[ \$EUID -eq 0 ]]; then T='$LIGHTRED' ; else T='$LIGHTBLUE'; fi; 
+PCT="\`if [[ \$EUID -eq 0 ]]; then T='$LIGHTRED' ; else T='$LIGHTBLUE'; fi;
 echo \$T \`"
 
 #  For "literal" command substitution to be assigned to a variable,
@@ -32,7 +32,7 @@ $DARKGRAY)$YELLOW-> $NC"
 
 #  When a variable is assigned, it should be called escaped:
 #+       echo \$T,
-#  Otherwise the value of the T variable is taken from the moment the PCT 
+#  Otherwise the value of the T variable is taken from the moment the PCT
 #+ variable is exported/read from .bash_profile.
 #  So, in this example it would be null.
 
@@ -44,8 +44,19 @@ $DARKGRAY)$YELLOW-> $NC"
 #  Variables PCT and PS1 can be merged into a new PS1 variable:
 
 PS1="\`if [[ \$EUID -eq 0 ]]; then PCT='$LIGHTRED';
-else PCT='$LIGHTBLUE'; fi; 
+else PCT='$LIGHTBLUE'; fi;
 echo '\n$GREEN[\w] \n$DARKGRAY('\$PCT'\t$DARKGRAY)-\
 ('\$PCT'\u$DARKGRAY)-('\$PCT'\!$DARKGRAY)$YELLOW-> $NC'\`"
 
 # The trick is to use strong quoting for parts of old PS1 variable.
+
+
+# If .bash_profile exists, bash doesn't read .profile
+if [[ -f ~/.profile ]]; then
+  . ~/.profile
+fi
+
+# If the shell is interactive and .bashrc exists, get the aliases and functions
+if [[ $- == *i* && -f ~/.bashrc ]]; then
+    . ~/.bashrc
+fi
