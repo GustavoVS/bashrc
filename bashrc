@@ -979,6 +979,9 @@ alias gdf="git diff -w "
 alias gcl="git clone "
 alias gcp='git cherry-pick '
 alias gfa='git fetch --all '
+function gadnw(){
+    git diff -U0 -w --no-color --no-ext-diff "$@" $1 $2 $3 $4 $5 | git apply --cached --ignore-whitespace --unidiff-zero -
+}
 
 function ln_t() {
     ln -sf mapasculturais/src/protected/application/themes/$1 $2
